@@ -1,5 +1,6 @@
 package curso.api.rest.cursospringrestapi.security;
 
+import java.io.IOException;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,7 @@ public class JWTTokenAutenticacaoService {
 	private static final String HEADER_STRING = "Authorization";
 
 	/* Gerando token de autenticacao e adicionando ao cabeçalho e reposta http */
-	public void addAuthentication(HttpServletResponse response, String username) throws Exception {
+	public void addAuthentication(HttpServletResponse response, String username) throws IOException {
 		/* montagem do token */
 		String JWT = Jwts.builder() /* chama o gerador de token */
 				.setSubject(username) /* add o usuario que ta tentando fazer login */
