@@ -139,6 +139,17 @@ public class indexController {
 			// na hora de persistir ele irá entender.
 			usuario.getTelefones().get(pos).setUsuario(usuario);
 		}
+		
+		/*Atualização de senha do usuario*/
+		Usuario userTemporario = usuarioRepository.findUserByLogin(usuario.getLogin());
+		
+		if (!userTemporario.getSenha().equals(usuario.getSenha())) { /*Se a senha for diferente*/
+			// var temporaria para criptografar a senha
+			String senhaCriptografada = new BCryptPasswordEncoder().encode(usuario.getSenha());
+			usuario.setSenha(senhaCriptografada);
+		} 
+		
+		
 		/* Outras rotinas antes de atualizar */
 		Usuario usuarioSalvo = usuarioRepository.save(usuario);
 
