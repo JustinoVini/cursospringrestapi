@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,14 +68,24 @@ public class indexController {
 		return new ResponseEntity<Usuario>(usuario.get(), HttpStatus.OK);
 	}
 
-	/* Delete de Usuario */
-	@DeleteMapping(value = "/{id}", produces = "application/text")
+	/* Delete de Usuario sem response entity*/
+	/*@DeleteMapping(value = "/{id}", produces = "application/text")
 	public String deletar(@PathVariable(value = "id") Long id) {
 
 		usuarioRepository.deleteById(id);
 
 		return "ok";
+		
+		"errado"
+	}*/
+	
+	/*Delete com ResponseEntity*/
+	@DeleteMapping(value = "/{id}", produces = "application/text")
+	public ResponseEntity<?> deletar(@PathVariable(value = "id") Long id) {
+	    usuarioRepository.deleteById(id);
+	    return ResponseEntity.ok("Usuário deletado com sucesso");
 	}
+	
 
 	/**
 	 * criando um exemplo de um método que retorna todos
@@ -106,6 +117,9 @@ public class indexController {
 			usuario.getTelefones().get(pos).setUsuario(usuario);
 		}
 
+		// var temporaria para criptografar a senha
+		String senhaCriptografada = new BCryptPasswordEncoder().encode(usuario.getSenha());
+		usuario.setSenha(senhaCriptografada);
 		// instacia do novo usuario
 		Usuario usuarioSalvo = usuarioRepository.save(usuario);
 
