@@ -52,6 +52,16 @@ public class Usuario implements UserDetails {
     		inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id", table = "role", unique = false,
     		  foreignKey = @ForeignKey (name = "role_fk", value = ConstraintMode.CONSTRAINT)))
     private List<Role> roles; /* Acessos */
+	
+	private String token = "";
+	
+	public void setToken(String token) {
+		this.token = token;
+	}
+	
+	public String getToken() {
+		return token;
+	}
 
 	/* Sem get e set do objeto mapeado não será possivel carregar o json */
 	public List<Telefone> getTelefones() {

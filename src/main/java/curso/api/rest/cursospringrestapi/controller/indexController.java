@@ -50,21 +50,6 @@ public class indexController {
 
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
 
-		// retorno do objeto em formato json
-		/*
-		 * Usuario usuario = new Usuario(); usuario.setId(50L);
-		 * usuario.setLogin("vinicius@edamatec.com.br");
-		 * usuario.setNome("Vinicius Justino"); usuario.setSenha("1234");
-		 * 
-		 * // formato de lista] Usuario usuario2 = new Usuario(); usuario2.setId(8L);
-		 * usuario2.setLogin("vinicius@edamatec.com.br");
-		 * usuario2.setNome("Vinicius Justino"); usuario2.setSenha("1234");
-		 * 
-		 * List<Usuario> usuarios = new ArrayList<Usuario>(); usuarios.add(usuario);
-		 * usuarios.add(usuario2); /* Retorno de json.
-		 */ // return ResponseEntity.ok(usuario); */
-
-		// retorno em lista.
 		return new ResponseEntity<Usuario>(usuario.get(), HttpStatus.OK);
 	}
 
