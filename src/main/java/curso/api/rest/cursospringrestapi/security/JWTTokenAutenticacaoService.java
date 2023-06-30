@@ -98,8 +98,7 @@ public class JWTTokenAutenticacaoService {
 			try {
 				response.getOutputStream().println("Seu TOKEN está expirado, faça login ou informe um novo TOKEN PARA AUTENTICACAO");
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				
 			}
 		}
 
