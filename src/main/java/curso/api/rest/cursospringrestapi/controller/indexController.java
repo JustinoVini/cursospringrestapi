@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import curso.api.rest.cursospringrestapi.model.Usuario;
+import curso.api.rest.cursospringrestapi.model.UsuarioDTO;
 import curso.api.rest.cursospringrestapi.repository.UsuarioRepository;
 
 // liberar cross
@@ -46,11 +47,11 @@ public class indexController {
 	 * @return nome
 	 */
 	@GetMapping(value = "/{id}", produces = "application/json")
-	public ResponseEntity<Usuario> init(@PathVariable(value = "id") Long id) {
+	public ResponseEntity<UsuarioDTO> init(@PathVariable(value = "id") Long id) {
 
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
 
-		return new ResponseEntity<Usuario>(usuario.get(), HttpStatus.OK);
+		return new ResponseEntity<UsuarioDTO>(new UsuarioDTO(usuario.get()), HttpStatus.OK);
 	}
 
 	/* Delete de Usuario sem response entity*/
