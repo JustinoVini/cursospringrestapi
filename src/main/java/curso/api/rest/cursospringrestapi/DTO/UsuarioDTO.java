@@ -1,6 +1,8 @@
-package curso.api.rest.cursospringrestapi.model;
+package curso.api.rest.cursospringrestapi.DTO;
 
 import java.io.Serializable;
+
+import curso.api.rest.cursospringrestapi.model.Usuario;
 
 public class UsuarioDTO implements Serializable {
 

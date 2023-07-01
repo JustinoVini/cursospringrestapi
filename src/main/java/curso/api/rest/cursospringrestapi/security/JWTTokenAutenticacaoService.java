@@ -49,6 +49,9 @@ public class JWTTokenAutenticacaoService {
 		/* adiciona um cabeçalho http */
 		response.addHeader(HEADER_STRING, token); /* Authorization: Bearer + base64 caracter */
 
+		ApplicationContextLoad.getApplicationContext().getBean(UsuarioRepository.class)
+				.atualizaTokenUser(JWT, username); // Passar JWT pra ficar sem o prefix
+		
 		/*
 		 * Liberando resposta para portas diferentes que usam API ou caso clientes WEB
 		 */
