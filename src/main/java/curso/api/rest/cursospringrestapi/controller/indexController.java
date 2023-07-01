@@ -1,5 +1,11 @@
 package curso.api.rest.cursospringrestapi.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +22,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.Gson;
 
 import curso.api.rest.cursospringrestapi.DTO.UsuarioDTO;
 import curso.api.rest.cursospringrestapi.model.Usuario;
@@ -89,12 +97,13 @@ public class indexController {
 	 * 
 	 * Em resumo, a classe ResponseEntity é uma ferramenta poderosa para
 	 * personalizar e controlar a resposta HTTP retornada por uma aplicação Spring.
+	 * @throws IOException 
 	 */
 	@PostMapping(value = "/", produces = "application/json")
 	// RequestBody, pega o json e converte para o objeto, para isso, o json precisa
 	// ter
 	// todos os atributos e iguais.
-	public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario) throws Exception {
 
 		// correção dos telefones.
 		for (int pos = 0; pos < usuario.getTelefones().size(); pos++) {
@@ -102,7 +111,42 @@ public class indexController {
 			// na hora de persistir ele irá entender.
 			usuario.getTelefones().get(pos).setUsuario(usuario);
 		}
-
+		
+		/*Consumindo API do VIACEP*/
+		URL url = new URL("https://viacep.com.br/ws/"+usuario.getCep()+"/json/");
+		/*Abrindo a excessao*/
+		URLConnection connection = url.openConnection();
+		/*Pegar os dados*/
+		InputStream is = connection.getInputStream();
+		/*Prepara a leitura*/
+		BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+		
+		/*Agora obteremos os dados nessa variavel*/
+		String cep = "";
+		StringBuilder jsonCep = new StringBuilder();
+		
+		/*Faça enquanto */		
+		while((cep = br.readLine()) != null) {
+			jsonCep.append(cep);
+		}
+		
+		System.out.println(jsonCep.toString());
+		
+		/*A linha abaixo pega a string e converte para json*/
+		Usuario userAux = new Gson().fromJson(jsonCep.toString(), Usuario.class);
+		
+		/*Passando os dados do usuario aux para o usuario para gravar*/
+		usuario.setCep(userAux.getCep());
+		usuario.setLogradouro(userAux.getLogradouro());
+		usuario.setComplemento(userAux.getComplemento());
+		usuario.setBairro(userAux.getBairro());
+		usuario.setLocalidade(userAux.getLocalidade());
+		usuario.setUf(userAux.getUf());
+		
+		/*Passar para json a string aux cep*/
+		
+		/*Fim do consumo viacep*/
+		
 		// var temporaria para criptografar a senha
 		String senhaCriptografada = new BCryptPasswordEncoder().encode(usuario.getSenha());
 		usuario.setSenha(senhaCriptografada);

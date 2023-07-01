@@ -38,29 +38,85 @@ public class Usuario implements UserDetails {
 	private String senha;
 
 	private String nome;
-	
+
 	private String cpf;
 
 	@OneToMany(mappedBy = "usuario", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Telefone> telefones = new ArrayList<Telefone>();
 
 	@OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "usuarios_role", uniqueConstraints = @UniqueConstraint (
-    		columnNames = {"usuario_id", "role_id"}, name = "unique_role_user"),
-    joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id", table = "usuario", unique = false,
-    foreignKey = @ForeignKey(name = "usuario_fk", value = ConstraintMode.CONSTRAINT)),
-    
-    		
-    		inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id", table = "role", unique = false,
-    		  foreignKey = @ForeignKey (name = "role_fk", value = ConstraintMode.CONSTRAINT)))
-    private List<Role> roles; /* Acessos */
-	
+	@JoinTable(name = "usuarios_role", uniqueConstraints = @UniqueConstraint(columnNames = { "usuario_id",
+			"role_id" }, name = "unique_role_user"), joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id", table = "usuario", unique = false, foreignKey = @ForeignKey(name = "usuario_fk", value = ConstraintMode.CONSTRAINT)),
+
+			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id", table = "role", unique = false, foreignKey = @ForeignKey(name = "role_fk", value = ConstraintMode.CONSTRAINT)))
+	private List<Role> roles; /* Acessos */
+
 	private String token = "";
-	
+
+	private String cep;
+
+	private String logradouro;
+
+	private String complemento;
+
+	private String bairro;
+
+	private String localidade;
+
+	private String uf;
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getLocalidade() {
+		return localidade;
+	}
+
+	public void setLocalidade(String localidade) {
+		this.localidade = localidade;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
+
 	public String getToken() {
 		return token;
 	}
@@ -138,7 +194,7 @@ public class Usuario implements UserDetails {
 		return roles;
 	}
 
-	@JsonIgnore /*Essa annotation faz com que a requisição ignore o valor anotado*/
+	@JsonIgnore /* Essa annotation faz com que a requisição ignore o valor anotado */
 	@Override
 	public String getPassword() {
 		return this.senha;
