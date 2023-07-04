@@ -9,6 +9,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'spring-angular-front';
 
+  mostraCard: boolean = false;
+
   usuario = {login: '', senha: ''};
 
   constructor(private loginService: LoginService) { }
