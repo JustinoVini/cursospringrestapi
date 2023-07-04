@@ -56,6 +56,9 @@ public class JWTTokenAutenticacaoService {
 		 * Liberando resposta para portas diferentes que usam API ou caso clientes WEB
 		 */
 		liberacaoCors(response);
+		
+		/*Liberando a resposta para porta diferente do angular*/
+		//response.addHeader("Access-Control-Allow-Origin", "*");
 
 		/* Escreve token como resposta no corpo http */
 		response.getWriter().write("{\"Authorization\": \"" + token + "\"}");
