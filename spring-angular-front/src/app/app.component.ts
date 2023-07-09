@@ -1,4 +1,3 @@
-import { LoginService } from '../app/core/service/login.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,16 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'spring-angular-front';
+  title = 'full-stack-front';
 
-  mostraCard: boolean = false;
-
-  usuario = {login: '', senha: ''};
-
-  constructor(private loginService: LoginService) { }
-
-  public login() {
-    this.loginService.login(this.usuario);
-  }
 
 }
