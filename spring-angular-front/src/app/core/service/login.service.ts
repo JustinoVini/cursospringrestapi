@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AppConstants } from '../models/app-constants';
+import { AppConstants } from '../utils/app-constants';
 import { Router } from '@angular/router';
 
 @Injectable({
