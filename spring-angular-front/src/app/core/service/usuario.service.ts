@@ -14,4 +14,8 @@ export class UsuarioService {
     return this.http.get<any>(AppConstants.baseUrl)
   }
 
+  getStudentList(): Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrl);
+  }
+
 }

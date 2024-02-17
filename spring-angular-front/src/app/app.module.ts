@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HttpInterceptorModule } from './core/shared/http-interceptor-module/http-interceptor-module.module';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HttpInterceptorModule } from './core/shared/http-interceptor-module/htt
     AppComponent,
     HomeComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
