@@ -1,0 +1,28 @@
+.overflow {
+  height: auto;
+  width: 100%;
+
+  .alinha {
+    padding: 1%;
+    margin: 1%;
+  }
+
+  .acoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    i {
+      font-size: 14pt;
+      cursor: pointer;
+
+      .deletar {
+        color: #ff0000;
+      }
+
+      .editar {
+        color: #ffa500;
+      }
+    }
+  }
+}

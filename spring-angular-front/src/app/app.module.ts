@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { HttpInterceptorModule } from './core/shared/http-interceptor-module/http-interceptor-module.module';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    HttpInterceptorModule
+    HttpInterceptorModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

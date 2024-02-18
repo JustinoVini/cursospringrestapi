@@ -15,10 +15,25 @@ export class UsuariosComponent implements OnInit {
   constructor(private _usuarios: UsuarioService) { }
 
   ngOnInit(): void {
+    this.init();
+  }
+
+  init() {
     this._usuarios.getStudentList().subscribe(response => {
       this.usuarios = response;
       console.log(response);
     })
+  }
+
+  async deleteUsuario(id: number) {
+    this._usuarios.deletarUsuario(id).subscribe(response => {
+      console.log("Retorno");
+      console.log(response);
+      this._usuarios.openSnackBar("Deletado com sucesso!", "fechar")
+      this.init();
+    }, error => {
+      this._usuarios.openSnackBar(error, "fechar")
+    });
   }
 
 }

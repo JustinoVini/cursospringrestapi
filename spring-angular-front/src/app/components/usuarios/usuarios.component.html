@@ -1,16 +1,29 @@
-<table class="table">
-  <thead class="table-info">
-    <tr>
-      <th>Id</th>
-      <th>Nome</th>
-      <th>CPF</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of usuarios">
-      <td>{{ row.id }}</td>
-      <td>{{ row.nome }}</td>
-      <td>{{ row.cpf }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="overflow">
+  <div class="alinha">
+    <mat-card class="cartao mat-elevation-z4">
+      <table class="table">
+        <thead class="table-info">
+          <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th style="text-align: center;">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of usuarios">
+            <td>{{ row.id }}</td>
+            <td>{{ row.nome }}</td>
+            <td>{{ row.cpf }}</td>
+            <td>
+              <div class="acoes">
+                <i (click)="deleteUsuario(row.id)" style="color: #ff0000;" class="bi bi-trash"></i>
+                <i style="color: #ffa500;" class="bi bi-pencil-square"></i>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card>
+  </div>
+</div>
