@@ -1,0 +1,40 @@
+<h3>Tela de Usuários</h3>
+<form>
+  <div class="row">
+    <div class="form-group col-md-1">
+      <label for="id">ID: </label>
+      <input type="text" class="form-control" id="id" readonly="true" autocomplete="false" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-12">
+      <label for="nome">Nome: </label>
+      <input type="text" class="form-control" id="nome" required="true" autocomplete="false" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="login">E-mail ou login</label>
+      <input type="text" class="form-control" id="login" name="login" required="true" autocomplete="false" />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="senha">senha</label>
+      <input type="password" class="form-control" id="senha" name="senha" required="true" autocomplete="false" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-3">
+      <label for="cpf">CPF</label>
+      <input type="text" class="form-control" id="cpf" name="cpf" required="true" autocomplete="false">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <button type="button" class="btn btn-primary" [routerLink]="['/usuarios']"
+        routerLinkActive="router-link-active">voltar</button>
+      <button type="button" class="btn btn-primary" style="margin: 10px;">Novo</button>
+      <button type="button" class="btn btn-primary" style="margin: 10px;">Salvar</button>
+    </div>
+  </div>
+</form>

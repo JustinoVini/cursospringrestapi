@@ -98,7 +98,7 @@ public class indexController {
 
 		List<Usuario> list = usuarioRepository.findAll();
 
-		Thread.sleep(6000);
+		Thread.sleep(1000);
 
 		return new ResponseEntity<List<Usuario>>(list, HttpStatus.OK);
 	}

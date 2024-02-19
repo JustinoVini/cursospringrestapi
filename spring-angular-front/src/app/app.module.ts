@@ -4,17 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { UsuarioAddComponent } from './components/usuarios/usuario-add/usuario-add.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { HttpInterceptorModule } from './core/shared/http-interceptor-module/http-interceptor-module.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
-import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    UsuarioAddComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,8 @@ import { MatInputModule } from '@angular/material/input';
     MatCardModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
