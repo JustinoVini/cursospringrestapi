@@ -9,7 +9,6 @@ import java.net.URLConnection;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.annotations.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -100,6 +99,15 @@ public class indexController {
 		List<Usuario> list = usuarioRepository.findAll();
 
 		Thread.sleep(6000);
+
+		return new ResponseEntity<List<Usuario>>(list, HttpStatus.OK);
+	}
+
+	/*Consulta usuário por nome*/
+	@GetMapping(value = "/usuarioPorNome/{nome}", produces = "application/json")
+	public ResponseEntity<List<Usuario>> usuarioConsultaNome(@PathVariable("nome") String nome) throws InterruptedException {
+
+		List<Usuario> list = usuarioRepository.findUserByNome(nome);
 
 		return new ResponseEntity<List<Usuario>>(list, HttpStatus.OK);
 	}

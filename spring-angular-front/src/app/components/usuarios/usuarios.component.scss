@@ -2,6 +2,19 @@
   height: auto;
   width: 100%;
 
+  .input-formulario {
+    padding: 0 15px 0 15px;
+    width: 100% !important;
+  }
+
+  .botao {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    text-align: start;
+    margin-top: 10px;
+  }
+
   .alinha {
     padding: 1%;
     margin: 1%;

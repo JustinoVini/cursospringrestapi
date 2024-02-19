@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatCardModule} from '@angular/material/card';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { NavbarComponent } from './layout/navbar/navbar.component';
-import { HttpInterceptorModule } from './core/shared/http-interceptor-module/http-interceptor-module.module';
+import { LoginComponent } from './components/login/login.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import { HttpInterceptorModule } from './core/shared/http-interceptor-module/http-interceptor-module.module';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HttpInterceptorModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

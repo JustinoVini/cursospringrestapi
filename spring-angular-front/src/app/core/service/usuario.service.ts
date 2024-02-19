@@ -23,8 +23,16 @@ export class UsuarioService {
     return this.http.delete(AppConstants.baseUrl + id);
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 3000,
+      horizontalPosition: 'end',
+      verticalPosition: 'top'
+    });
+  }
+
+  consultarUser(nome: String): Observable<any> {
+    return this.http.get(AppConstants.baseUrl + "usuarioPorNome/" + nome);
   }
 
 }

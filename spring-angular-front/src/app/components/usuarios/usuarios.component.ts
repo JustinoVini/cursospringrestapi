@@ -11,6 +11,7 @@ import { UsuarioService } from 'src/app/core/service/usuario.service';
 export class UsuariosComponent implements OnInit {
 
   usuarios: User[] = [];
+  nome: string = '';
 
   constructor(private _usuarios: UsuarioService) { }
 
@@ -29,10 +30,18 @@ export class UsuariosComponent implements OnInit {
     this._usuarios.deletarUsuario(id).subscribe(response => {
       console.log("Retorno");
       console.log(response);
-      this._usuarios.openSnackBar("Deletado com sucesso!", "fechar")
+      this._usuarios.openSnackBar("Deletado com sucesso!")
       this.init();
     }, error => {
-      this._usuarios.openSnackBar(error, "fechar")
+      this._usuarios.openSnackBar(error)
+    });
+  }
+
+  consultarUsuarioPorNome() {
+    this._usuarios.consultarUser(this.nome).subscribe(response => {
+      this.usuarios = response;
+    }, error => {
+      this._usuarios.openSnackBar(error)
     });
   }
 
