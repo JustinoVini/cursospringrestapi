@@ -57,7 +57,7 @@ public class indexController {
 	 * @param nome
 	 * @return nome
 	 */
-	@GetMapping(value = "/{id}", produces = "application/json")
+	/* @GetMapping(value = "/{id}", produces = "application/json")
 	@Cacheable("cacheuser")
 	@CacheEvict(value = "cacheuser", allEntries = true)
 	@CachePut("cacheuser")
@@ -66,6 +66,15 @@ public class indexController {
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
 
 		return new ResponseEntity<UsuarioDTO>(new UsuarioDTO(usuario.get()), HttpStatus.OK);
+	} */
+
+	@GetMapping(value = "/{id}", produces = "application/json")
+	@Cacheable("cacheuser")
+	@CacheEvict(value = "cacheuser", allEntries = true)
+	@CachePut("cacheuser")
+	public ResponseEntity<Usuario> buscarPorId(@PathVariable(value = "id") Long id) {
+		Usuario usuario = usuarioRepository.findById(id).get();
+		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 
 	/* Delete de Usuario sem response entity*/

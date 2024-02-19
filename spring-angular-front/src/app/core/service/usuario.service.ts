@@ -19,8 +19,16 @@ export class UsuarioService {
     return this.http.get<any>(AppConstants.baseUrl);
   }
 
+  getStudant(id: number): Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrl + id);
+  }
+
   deletarUsuario(id: number): Observable<any> {
     return this.http.delete(AppConstants.baseUrl + id);
+  }
+
+  consultarUser(nome: String): Observable<any> {
+    return this.http.get(AppConstants.baseUrl + "usuarioPorNome/" + nome);
   }
 
   openSnackBar(message: string) {
@@ -29,10 +37,6 @@ export class UsuarioService {
       horizontalPosition: 'end',
       verticalPosition: 'top'
     });
-  }
-
-  consultarUser(nome: String): Observable<any> {
-    return this.http.get(AppConstants.baseUrl + "usuarioPorNome/" + nome);
   }
 
 }
